@@ -104,7 +104,7 @@ cd Data_Structures_In_Cpp
 Uma lista duplamente encadeada é uma estrutura de dados na qual cada elemento (nó) contém referências tanto para o próximo quanto para o anterior nó na sequência, permitindo a navegação bidirecional. Isso facilita operações de inserção, exclusão e busca em ambas as direções, proporcionando flexibilidade em manipulação de dados.
 
 **Imagem ilustrativa:**
-![lista-duplamente-encadeada](https://blog.pantuza.com/uploads/3c2f826b9b662f523fc857cc9eec0b42c73cd77e)
+[![3c2f826b9b662f523fc857cc9eec0b42c73cd77e.png](https://i.postimg.cc/ZK4PFCRt/3c2f826b9b662f523fc857cc9eec0b42c73cd77e.png)](https://postimg.cc/NLCrQGmp)
 
 ### O que é um Nó?
 
