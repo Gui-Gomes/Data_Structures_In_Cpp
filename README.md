@@ -33,7 +33,6 @@ Explore, aprenda e compartilhe conhecimento!
   - [Lista Duplamente Encadeada](#lista-duplamente-encadeada)
   - [Fila](#fila)
   - [Pilha](#pilha)
-- [Contato](#contato)
 
 ## Instalação
 
@@ -493,3 +492,199 @@ O arquivo `DoublyLinkedList.h` contém a implementação de uma lista duplamente
       - **Observação:** Se uma das posições for inválida, uma exceção `std::out_of_range` será lançada.
 - `~List()`: Destrutor para liberar a memória, excluindo todos os nós na lista.
   - **Sem Parâmetros ou Retorno**
+
+## Fila
+
+### O que é uma Pilha(Stack)?
+
+Uma pilha é uma estrutura de dados linear que segue o princípio Last In, First Out (LIFO), onde o último elemento inserido é o primeiro a ser removido. As operações principais são a inserção (push) e a remoção (pop) de elementos, que ocorrem apenas no topo da pilha.
+
+**Imagem ilustrativa:**
+
+![pilha](https://media.geeksforgeeks.org/wp-content/cdn-uploads/20221219100314/stack.drawio2.png)
+
+### Representação em Programação Orientada a Objetos:
+
+Aplicando os princípios da programação orientada a objetos, é possível empregar a Lista Duplamente Encadeada previamente criada como base para a implementação da Pilha.
+
+### Stack.h :
+```cpp
+#pragma once
+#ifndef STACK_H
+#define STACK_H
+
+#include "../../../Doubly_Linked_List/src/include/DoublyLinkedList.h"
+#include <stdexcept>
+
+template <typename T> class Stack {
+private:
+  List<T> *stack; // Pointer to a Doubly Linked List used as the underlying data
+                  // structure for the stack
+
+  // Private method to set the underlying stack
+  void setStack(List<T> *stack) { this->stack = stack; }
+
+  // Private method to get the underlying stack
+  List<T> *getStack() { return stack; }
+
+public:
+  // Constructor: Initializes the stack with a new Doubly Linked List
+  Stack() { setStack(new List<T>()); }
+
+  // Destructor: Deletes the underlying Doubly Linked List
+  ~Stack() { delete stack; }
+
+  // Returns the size of the stack
+  int size() { return getStack()->size(); }
+
+  // Checks if the stack is empty
+  bool isEmpty() { return getStack()->isEmpty(); }
+
+  // Pushes an element onto the stack
+  T push(T data) {
+    getStack()->add(data);
+    return data;
+  }
+
+  // Pops the top element from the stack
+  T pop() {
+    if (!isEmpty()) {
+      T data = getStack()->get(size() - 1);
+      getStack()->remove();
+      return data;
+    }
+    throw std::out_of_range("Invalid position!");
+  }
+
+  // Returns the top element of the stack without removing it
+  T peek() { return getStack()->get(size() - 1); }
+};
+
+#endif
+
+```
+
+### Descrição do Stack.h :
+
+O arquivo `Stack.h` contém a implementação de uma pilha (stack) genérica em C++. A pilha utiliza uma lista duplamente encadeada como a estrutura de dados subjacente para armazenar os elementos.
+
+### Atributos Privados
+
+- `List<T> *stack`: Ponteiro para uma Lista Duplamente Encadeada utilizada como a estrutura de dados subjacente para a pilha.
+
+### Métodos Privados
+
+#### Métodos de Acesso à Lista
+
+- `void setStack(List<T> *stack)`: Define a lista duplamente encadeada utilizada como pilha.
+  - **Parâmetros:** `List<T> *stack` - Ponteiro para a lista duplamente encadeada.
+  - **Sem Retorno**
+- `List<T> *getStack()`: Retorna o ponteiro para a lista duplamente encadeada.
+  - **Sem Parâmetros**
+  - **Retorno:** `List<T>*` - Ponteiro para a lista duplamente encadeada.
+
+### Métodos Públicos
+
+#### Construtor
+
+- `Stack()`: Construtor que inicializa a pilha com uma nova Lista Duplamente Encadeada.
+  - **Sem Parâmetros ou Retorno**
+
+#### Destrutor
+
+- `~Stack()`: Destrutor que deleta a Lista Duplamente Encadeada subjacente.
+  - **Sem Parâmetros ou Retorno**
+
+#### Métodos de Informação sobre a Pilha
+
+- `int size()`: Retorna o tamanho atual da pilha.
+  - **Retorno:** `int` - Tamanho atual da pilha.
+- `bool isEmpty()`: Verifica se a pilha está vazia.
+  - **Retorno:** `bool` - `true` se a pilha estiver vazia, `false` caso contrário.
+
+#### Métodos de Manipulação da Pilha
+
+- `T push(T data)`: Adiciona um elemento ao topo da pilha.
+  - **Parâmetros:**
+    - `T data` - Dados a serem armazenados no novo elemento.
+  - **Retorno:** `T` - Dados armazenados no elemento adicionado.
+- `T pop()`: Remove e retorna o elemento do topo da pilha.
+  - **Retorno:** `T` - Dados do elemento removido.
+  - **Observação:** Se a pilha estiver vazia, uma exceção `std::out_of_range` será lançada.
+- `T peek()`: Retorna o elemento do topo da pilha sem removê-lo.
+  - **Retorno:** `T` - Dados do elemento do topo da pilha.
+
+## Fila
+
+### O que é uma Fila (Queue):
+
+Uma fila em estrutura de dados é uma coleção ordenada de elementos onde a remoção ocorre sempre no início (front) e a inserção ocorre sempre no final (rear), seguindo o princípio FIFO (First-In-First-Out).
+
+**Imagem ilustrativa:**
+
+![queue](https://media.geeksforgeeks.org/wp-content/cdn-uploads/20221213113312/Queue-Data-Structures.png)
+
+### Representação em Programação Orientada a Objetos:
+
+Utilizando os fundamentos da programação orientada a objetos, é viável utilizar a Lista Duplamente Encadeada que foi criada anteriormente como estrutura base para desenvolver a Fila, de maneira análoga ao que foi realizado com a Pilha.
+
+### Queue.h :
+
+```cpp
+
+```
+
+### Descrição da Queue.h :
+
+O arquivo `Queue.h` contém a implementação de uma fila (queue) genérica em C++. A fila utiliza uma lista duplamente encadeada como a estrutura de dados subjacente para armazenar os elementos.
+
+### Atributos Privados
+
+- `List<T> *queue`: Ponteiro para uma Lista Duplamente Encadeada utilizada como a estrutura de dados subjacente para a fila.
+
+### Métodos Privados
+
+#### Métodos de Acesso à Lista
+
+- `void setQueue(List<T> *queue)`: Define a lista duplamente encadeada utilizada como fila.
+  - **Parâmetros:** `List<T> *queue` - Ponteiro para a lista duplamente encadeada.
+  - **Sem Retorno**
+- `List<T> *getQueue()`: Retorna o ponteiro para a lista duplamente encadeada.
+  - **Retorno:** `List<T>*` - Ponteiro para a lista duplamente encadeada.
+
+### Métodos Públicos
+
+#### Construtor
+
+- `Queue()`: Construtor que inicializa a fila com uma nova Lista Duplamente Encadeada.
+  - **Sem Parâmetros ou Retorno**
+
+#### Destrutor
+
+- `~Queue()`: Destrutor que deleta a Lista Duplamente Encadeada subjacente.
+  - **Sem Parâmetros ou Retorno**
+
+#### Métodos de Informação sobre a Fila
+
+- `bool isEmpty()`: Verifica se a fila está vazia.
+  - **Retorno:** `bool` - `true` se a fila estiver vazia, `false` caso contrário.
+- `int size()`: Retorna o tamanho atual da fila.
+  - **Retorno:** `int` - Tamanho atual da fila.
+
+#### Métodos de Manipulação da Fila
+
+- `T add(T data)`: Adiciona um elemento ao final da fila.
+  - **Parâmetros:**
+    - `T data` - Dados a serem armazenados no novo elemento.
+  - **Retorno:** `T` - Dados armazenados no elemento adicionado.
+- `T front()`: Retorna o elemento na frente da fila sem removê-lo.
+  - **Retorno:** `T` - Dados do elemento na frente da fila.
+- `T offer(T data, int position)`: Oferece um elemento em uma posição específica na fila.
+  - **Parâmetros:**
+    - `T data` - Dados a serem armazenados no novo elemento.
+    - `int position` - Posição na fila onde o novo elemento será oferecido.
+      - **Observação:** Se a posição for menor que 0 ou maior que o tamanho atual da fila, o elemento será adicionado no final da fila.
+  - **Retorno:** `T` - Dados armazenados no elemento oferecido.
+- `T remove()`: Remove e retorna o elemento na frente da fila.
+  - **Retorno:** `T` - Dados do elemento removido.
+  - **Observação:** Se a fila estiver vazia, uma exceção `std::out_of_range` será lançada.
