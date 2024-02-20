@@ -3,7 +3,7 @@
 ## Select your language | Selecione seu idioma
 
 - [Português 🇧🇷](#Sobre)
-- [English 🇺🇸](#english-version-🇺🇸)
+- [English 🇺🇸](#about)
 
 ## Sobre
 [![estrutura-de-dados-em-cpp.png](https://i.postimg.cc/0N9VzzqN/estrutura-de-dados-em-cpp.png)](https://postimg.cc/jDkH9d2V)
